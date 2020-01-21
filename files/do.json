@@ -15,6 +15,7 @@
         "myProvisioning": {
             "class": "Provision",
             "ltm": "nominal",
+            "afm": "nominal",
             "asm": "nominal",
             "ilx": "nominal"
        },
@@ -29,6 +30,38 @@
                 }
             ],
             "cmpHash": "dst-ip"
+        },
+        "internal": {
+            "class": "VLAN",
+            "tag": 1,
+            "mtu": 1500,
+            "interfaces": [
+                {
+                    "name": "1.2",
+                    "tagged": true
+                }
+            ],
+            "cmpHash": "dst-ip"
+        },
+        "internal-self": {
+            "class": "SelfIp",
+            "address": "10.30.0.100/24",
+            "vlan": "internal",
+            "allowService": "default",
+            "trafficGroup": "traffic-group-local-only"
+        },
+        "external-self": {
+            "class": "SelfIp",
+            "address": "10.10.0.100/24",
+            "vlan": "external",
+            "allowService": "none",
+            "trafficGroup": "traffic-group-local-only"
+        },
+        "default": {
+            "class": "Route",
+            "gw": "10.10.0.1",
+            "network": "default",
+            "mtu": 1500
         },
         "myDns": {
             "class": "DNS",
@@ -78,6 +111,33 @@
                 "AES128-SHA256"
             ],
             "sslProtocol": "all -SSLv2 -SSLv3 -TLSv1"
+        },
+        "sshSettings": {
+            "class": "SSHD",
+            "banner": "Banner to display",
+            "inactivityTimeout": 123,
+            "ciphers": [
+                "aes128-ctr",
+                "aes192-ctr",
+                "aes256-ctr"
+            ],
+            "loginGraceTime": 100,
+            "MACS": [
+                "hmac-sha1",
+                "hmac-ripemd160",
+                "hmac-md5"
+            ],
+            "maxAuthTries": 10,
+            "maxStartups": "5",
+            "protocol": 1
+        },
+        "configsync": {
+            "class": "ConfigSync",
+            "configsyncIp": "/Common/internal-self/address"
+        },
+        "failoverAddress": {
+            "class": "FailoverUnicast",
+            "address": "/Common/internal-self/address"
         },
         "mySnmpAgent": {
             "class": "SnmpAgent",
@@ -149,14 +209,6 @@
                 "password": "P@ssW0rd"
             },
             "engineId": "0x80001f8880c6b6067fdacfb558"
-        },
-        "external-self": {
-            "class": "SelfIp",
-            "address": "172.16.2.10/24",
-            "vlan": "external",
-            "allowService": "default",
-            "trafficGroup": "traffic-group-local-only"
         }
-
     }
 }
