@@ -5,7 +5,7 @@
     "label": "my BIG-IP declaration for declarative onboarding",
     "Common": {
         "class": "Tenant",
-        "hostname": "bigip.maniak.io",
+        "hostname": "bigip.maniak.net",
         "admin": {
             "class": "User",
             "userType": "regular",
