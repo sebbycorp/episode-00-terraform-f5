@@ -8,9 +8,18 @@ resource "bigip_as3" "as3-app1" {
   config_name = "config-app1"
 }
 
-
 # Loading from a file is the preferred method
 resource "bigip_ltm_irule" "rule" {
   name  = "/Common/redirect.irule"
   irule = "${file("irules/redirect.tcl")}"
+}
+
+#
+resource "bigip_ltm_monitor" "monitor" {
+  name        = "/Common/terraform_monitor"
+  parent      = "/Common/http"
+  send        = "GET /some/path\r\n"
+  timeout     = "999"
+  interval    = "999"
+  destination = "1.2.3.4:1234"
 }
