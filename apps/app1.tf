@@ -48,8 +48,8 @@ resource "bigip_ltm_pool" "pool" {
 }
 
 resource "bigip_ltm_pool_attachment" "node-pool-attach" {
-  pool = "/Common/terraform-pool"
-  node = "/Common/node-nginx-server1:80"
+  pool = "/Common/nginx-pool"
+  node = "/Common/nginx-server3:80"
 }
 
 resource "bigip_ltm_virtual_server" "http" {
