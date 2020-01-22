@@ -1,5 +1,5 @@
 resource "bigip_do" "do-f5" {
-  do_json     = "${file("onboard-config/do.json")}"
+  do_json     = "${file("infrastructure/do.json")}"
   config_name = "deploy-do-f5"
 }
 
