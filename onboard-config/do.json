@@ -5,7 +5,7 @@
     "label": "my BIG-IP declaration for declarative onboarding",
     "Common": {
         "class": "Tenant",
-        "hostname": "bigip.maniak.net",
+        "hostname": "bigip01.maniak.net",
         "mySystem": {
             "class": "System",
             "cliInactivityTimeout": 1200,
@@ -31,7 +31,7 @@
             "interfaces": [
                 {
                     "name": "1.1",
-                    "tagged": true
+                    "tagged": false
                 }
             ],
             "cmpHash": "dst-ip"
@@ -43,7 +43,7 @@
             "interfaces": [
                 {
                     "name": "1.2",
-                    "tagged": true
+                    "tagged": false
                 }
             ],
             "cmpHash": "dst-ip"
@@ -51,7 +51,7 @@
         "internal-self": {
             "class": "SelfIp",
             "address": "10.20.0.100/24",
-            "vlan": "external",
+            "vlan": "internal",
             "allowService": "none",
             "trafficGroup": "traffic-group-local-only"
         },
