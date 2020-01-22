@@ -1,5 +1,5 @@
 #
-resource "bigip_ltm_monitor" "monitor" {
+resource "bigip_ltm_monitor" "terraform_monitor" {
   name        = "/Common/terraform_monitor"
   parent      = "/Common/http"
   send        = "GET /some/path\r\n"
@@ -7,8 +7,8 @@ resource "bigip_ltm_monitor" "monitor" {
   interval    = "999"
 }
 
-resource "bigip_ltm_node" "node" {
-  name             = "/Common/nginx_server"
+resource "bigip_ltm_node" "node_nginx_server_01" {
+  name             = "/Common/nginx_server_01"
   address          = "10.20.0.5"
   connection_limit = "0"
   dynamic_ratio    = "1"
