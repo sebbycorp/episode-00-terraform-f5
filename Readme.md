@@ -13,3 +13,4 @@ What this repo does.
 
 I will provide more updates to this repo as I learn more and more. 
 
+Note: If you want to use this code make sure you create a terraform.tfvars file and include username and password as your vairables. 
