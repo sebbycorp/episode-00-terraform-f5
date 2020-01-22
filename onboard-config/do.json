@@ -147,7 +147,7 @@
         },
         "sshSettings": {
             "class": "SSHD",
-            "banner": "Banner to display",
+            "banner": "Welcome to the F5... dont screw it up.. Banner to display",
             "inactivityTimeout": 123,
             "ciphers": [
                 "aes128-ctr",
