@@ -20,13 +20,12 @@
         "myProvisioning": {
             "class": "Provision",
             "ltm": "nominal",
-            "afm": "nominal",
-            "asm": "nominal",
+            "apm": "nominal",
             "ilx": "nominal"
        },
         "external": {
             "class": "VLAN",
-            "tag": 2,
+            "tag": 90,
             "mtu": 1500,
             "interfaces": [
                 {
@@ -36,35 +35,16 @@
             ],
             "cmpHash": "dst-ip"
         },
-        "internal": {
-            "class": "VLAN",
-            "tag": 1,
-            "mtu": 1500,
-            "interfaces": [
-                {
-                    "name": "1.2",
-                    "tagged": false
-                }
-            ],
-            "cmpHash": "dst-ip"
-        },
-        "internal-self": {
-            "class": "SelfIp",
-            "address": "10.20.0.100/24",
-            "vlan": "internal",
-            "allowService": "none",
-            "trafficGroup": "traffic-group-local-only"
-        },
         "external-self": {
             "class": "SelfIp",
-            "address": "10.10.0.100/24",
+            "address": "192.168.90.5/24",
             "vlan": "external",
             "allowService": "none",
             "trafficGroup": "traffic-group-local-only"
         },
         "default": {
             "class": "Route",
-            "gw": "10.10.0.1",
+            "gw": "192.168.90.1",
             "network": "default",
             "mtu": 1500
         },
@@ -120,7 +100,7 @@
         "httpdSettings": {
             "class": "HTTPD",
             "allow": [
-                "192.168.1.0/24"
+                "192.168.0.0/16"
             ],
             "authPamIdleTimeout": 86400,
             "maxClients": 10,
@@ -179,6 +159,7 @@
             "allowList": [
                 "10.30.100.0/23",
                 "10.40.100.0/23",
+                "192.168.0.0/16",
                 "10.8.100.0/32",
                 "10.30.10.100",
                 "10.30.10.200"

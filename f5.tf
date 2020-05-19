@@ -2,8 +2,7 @@ variable "username" {}
 variable "password" {}
 
 provider "bigip" {
-  version  = "~> 1.1"
-  address  = "192.168.1.126"
+  address  = "192.168.86.61"
   username = var.username
   password = var.password
 }
