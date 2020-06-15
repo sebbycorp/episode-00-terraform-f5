@@ -1,4 +1,6 @@
-# Episode 00 Building F5 using Terraform #100DaysOfCode
+# 100 Days of Code Day 1
+
+The following bootstraps Virtual F5 on a phsyical environment and configures the base configuration.
 
 The following git repo is an exaample of how Manage your F5 BIG-IP using Code.
 
