@@ -20,10 +20,11 @@
         "myProvisioning": {
             "class": "Provision",
             "ltm": "nominal",
-            "apm": "nominal",
-            "ilx": "nominal"
+            "asm": "nominal",
+            "ilx": "nominal",
+            "avr": "nominal"
        },
-        "external": {
+        "external_vlan": {
             "class": "VLAN",
             "tag": 90,
             "mtu": 1500,
@@ -37,14 +38,14 @@
         },
         "external-self": {
             "class": "SelfIp",
-            "address": "192.168.90.5/24",
+            "address": "192.168.86.5/24",
             "vlan": "external",
             "allowService": "none",
             "trafficGroup": "traffic-group-local-only"
         },
         "default": {
             "class": "Route",
-            "gw": "192.168.90.1",
+            "gw": "192.168.86.1",
             "network": "default",
             "mtu": 1500
         },
