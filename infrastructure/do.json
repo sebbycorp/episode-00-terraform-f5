@@ -21,12 +21,11 @@
             "class": "Provision",
             "ltm": "nominal",
             "asm": "nominal",
-            "ilx": "nominal",
-            "avr": "nominal"
+            "ilx": "nominal"
        },
-        "external_vlan": {
+        "external": {
             "class": "VLAN",
-            "tag": 90,
+            "tag": 4094,
             "mtu": 1500,
             "interfaces": [
                 {
@@ -38,14 +37,14 @@
         },
         "external-self": {
             "class": "SelfIp",
-            "address": "192.168.86.5/24",
+            "address": "192.168.84.5/24",
             "vlan": "external",
             "allowService": "none",
             "trafficGroup": "traffic-group-local-only"
         },
         "default": {
             "class": "Route",
-            "gw": "192.168.86.1",
+            "gw": "192.168.84.1",
             "network": "default",
             "mtu": 1500
         },
@@ -67,46 +66,6 @@
             ],
             "timezone": "UTC"
         },
-        "guestUser": {
-            "class": "User",
-            "userType": "regular",
-            "password": "guestNewPass1",
-            "partitionAccess": {
-                "Common": {
-                    "role": "guest"
-                }
-            }
-        },
-        "TEAM1": {
-            "class": "RemoteAuthRole",
-            "attribute": "memberOF=CN=Team-1,add-ldap-path",
-            "console": "tmsh",
-            "lineOrder": 925,
-            "role": "admin",
-            "remoteAccess": false,
-            "userPartition": "all"
-        },
-        "TEAM2": {
-            "class": "RemoteAuthRole",
-            "attribute": "memberOF=CN=Team-2,add-ldap-path",
-            "console": "tmsh",
-            "lineOrder": 940,
-            "role": "guest",
-            "remoteAccess": true,
-            "userPartition": "all"
-        },
-        "LocalDCSyslog": {
-            "class": "SyslogRemoteServer",
-            "host": "local-ip",
-            "localIp": "172.28.68.42",
-            "remotePort": 514
-          },
-          "DRDCSyslog": {
-            "class": "SyslogRemoteServer",
-            "host": "dr-ip",
-            "localIp": "172.28.68.42",
-            "remotePort": 514
-          },
         "httpdSettings": {
             "class": "HTTPD",
             "allow": [
@@ -161,78 +120,6 @@
         "failoverAddress": {
             "class": "FailoverUnicast",
             "address": "/Common/external-self/address"
-        },
-        "mySnmpAgent": {
-            "class": "SnmpAgent",
-            "contact": "Op Center <ops@example.com>",
-            "location": "Seattle, WA",
-            "allowList": [
-                "10.30.100.0/23",
-                "10.40.100.0/23",
-                "192.168.0.0/16",
-                "10.8.100.0/32",
-                "10.30.10.100",
-                "10.30.10.200"
-            ]
-        },
-        "snmpUser1": {
-            "class": "SnmpUser",
-            "authentication": {
-                "protocol": "sha",
-                "password": "pass1W0rd!"
-            },
-            "privacy": {
-                "protocol": "aes",
-                "password": "P@ssW0rd"
-            },
-            "oid": ".1",
-            "access": "rw"
-        },
-        "public": {
-            "class": "SnmpCommunity",
-            "ipv6": false,
-            "source": "all",
-            "oid": ".1",
-            "access": "ro"
-        },
-        "snmpCommunityWithSpecialChar": {
-            "class": "SnmpCommunity",
-            "name": "special!community",
-            "ipv6": false,
-            "source": "all",
-            "oid": ".1",
-            "access": "ro"
-        },
-        "myTraps": {
-            "class": "SnmpTrapEvents",
-            "agentStartStop": true,
-            "authentication": true,
-            "device": true
-        },
-        "myV2SnmpDestination": {
-            "class": "SnmpTrapDestination",
-            "version": "2c",
-            "community": "my_snmp_community",
-            "destination": "10.0.10.100",
-            "port": 80,
-            "network": "other"
-        },
-        "myV3SnmpDestination": {
-            "class": "SnmpTrapDestination",
-            "version": "3",
-            "destination": "10.0.10.1",
-            "port": 80,
-            "network": "other",
-            "securityName": "someSnmpUser",
-            "authentication": {
-                "protocol": "sha",
-                "password": "P@ssW0rd"
-            },
-            "privacy": {
-                "protocol": "aes",
-                "password": "P@ssW0rd"
-            },
-            "engineId": "0x80001f8880c6b6067fdacfb558"
         }
     }
 }
